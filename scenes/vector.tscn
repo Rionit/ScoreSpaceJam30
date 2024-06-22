@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfwsb0bf1a2yf"]
+
+[ext_resource type="Script" path="res://scripts/vector.gd" id="1_7db22"]
+
+[node name="Vector" type="Node2D"]
+script = ExtResource("1_7db22")

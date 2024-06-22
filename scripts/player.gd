@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
-enum sm { IDLE, HOLDING, AIMING}
+enum sm { IDLE, HOLDING, AIMING }
 
 @onready var spawner = %Spawner
-@onready var pointer = $Pointer
+@onready var pointer = %Pointer
+@onready var rotables = $Rotables
+@onready var vector = $Vector
 
 var asteroid = preload("res://scenes/asteroid.tscn")
 
-var click_position : Vector2 = Vector2.ZERO
-var click_direction : Vector2 = Vector2.ZERO
-var dir : Vector2 = Vector2.ZERO
+var click_start : Vector2 = Vector2.ZERO
+var click_end : Vector2 = Vector2.ZERO
 var state : sm = sm.IDLE
 
 const force := 100
@@ -19,10 +20,10 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouse:
-		click_direction = event.position
+		click_end = event.position
 
 func get_direction():
-	return (click_position - click_direction).normalized()
+	return (click_start - click_end).normalized()
 
 func throw_asteroid(_velocity):
 	var instance = asteroid.instantiate()
@@ -32,16 +33,19 @@ func throw_asteroid(_velocity):
 
 func holding():
 	if Input.is_action_just_pressed("left_click"):
-		click_position = get_global_mouse_position()
+		click_start = get_global_mouse_position()
 		state = sm.AIMING
 
 func aiming():
-	look_at(position - get_direction())
+	vector.visible = true
+	vector.refresh(click_start, click_end)
+	rotables.look_at(position - get_direction())
 	if Input.is_action_just_released("left_click"):
 		state = sm.IDLE
 		var _velocity = get_direction() * force
 		velocity = _velocity
 		throw_asteroid(_velocity)
+		vector.visible = false
 
 func _physics_process(delta):
 	
