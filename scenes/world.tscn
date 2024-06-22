@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbcucre478fuv"]
+[gd_scene load_steps=4 format=3 uid="uid://bbcucre478fuv"]
 
 [ext_resource type="PackedScene" uid="uid://6odsfphsm0kc" path="res://scenes/player.tscn" id="1_438g7"]
+[ext_resource type="PackedScene" uid="uid://crrkv51mbvwwc" path="res://scenes/asteroid.tscn" id="2_62jkl"]
+[ext_resource type="PackedScene" uid="uid://byy84d2mgph2t" path="res://scenes/ufo.tscn" id="3_govex"]
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_438g7")]
 position = Vector2(577, 311)
+
+[node name="Asteroid" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(520, 148)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(177, 382)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(183, 183)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(923, 541)
+
+[node name="Asteroid5" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(1022, 203)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_govex")]
+position = Vector2(785, 158)

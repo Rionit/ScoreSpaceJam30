@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://byy84d2mgph2t"]
+
+[ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_1lt42"]
+[ext_resource type="Script" path="res://scripts/ufo.gd" id="1_jxh1x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycr0t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_elbwj"]
+radius = 14.0
+height = 76.5387
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvglj"]
+radius = 106.005
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_jxh1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ycr0t")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.269373, 2.33578e-07)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_elbwj")
+
+[node name="Surroundings" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surroundings"]
+shape = SubResource("CircleShape2D_tvglj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.86265e-07, -3.57628e-07)
+scale = Vector2(0.515625, 0.140625)
+texture = ExtResource("1_1lt42")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Surroundings" to="." method="_on_surroundings_body_entered"]
+[connection signal="body_exited" from="Surroundings" to="." method="_on_surroundings_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

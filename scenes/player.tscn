@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://6odsfphsm0kc"]
+[gd_scene load_steps=5 format=3 uid="uid://6odsfphsm0kc"]
 
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_87mre"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kfj6m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxwvw"]
-radius = 65.6049
+radius = 35.0571
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trwbt"]
+radius = 55.1453
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kfj6m")
 
 [node name="Astronaut" type="Sprite2D" parent="."]
+scale = Vector2(0.53125, 0.5)
 texture = ExtResource("1_87mre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -20,3 +24,14 @@ shape = SubResource("CircleShape2D_gxwvw")
 scale = Vector2(42.6563, 0.0625)
 texture = ExtResource("1_87mre")
 offset = Vector2(64.515, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_trwbt")
+
+[node name="Spawner" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(101, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

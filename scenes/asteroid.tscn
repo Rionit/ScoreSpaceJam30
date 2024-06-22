@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://crrkv51mbvwwc"]
+[gd_scene load_steps=4 format=3 uid="uid://crrkv51mbvwwc"]
 
+[ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_2hlsi"]
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_45sac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w3df"]
 radius = 32.7567
 
-[node name="Asteroid" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2
+[node name="Asteroid" type="RigidBody2D" groups=["asteroids"]]
 gravity_scale = 0.0
+script = ExtResource("1_2hlsi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.484375, 0.484375)
