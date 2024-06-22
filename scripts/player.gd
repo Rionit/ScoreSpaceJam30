@@ -13,10 +13,10 @@ var click_start : Vector2 = Vector2.ZERO
 var click_end : Vector2 = Vector2.ZERO
 var state : sm = sm.IDLE
 
-const force := 100
+const max_force := 600
 
 func _ready():
-	velocity = Vector2(0, -force)
+	velocity = Vector2(0, -200)
 
 func _input(event):
 	if event is InputEventMouse:
@@ -24,6 +24,9 @@ func _input(event):
 
 func get_direction():
 	return (click_start - click_end).normalized()
+
+func get_force():
+	return clamp((click_end - click_start).length(), 0, max_force)
 
 func throw_asteroid(_velocity):
 	var instance = asteroid.instantiate()
@@ -42,7 +45,7 @@ func aiming():
 	rotables.look_at(position - get_direction())
 	if Input.is_action_just_released("left_click"):
 		state = sm.IDLE
-		var _velocity = get_direction() * force
+		var _velocity = get_direction() * get_force()
 		velocity = _velocity
 		throw_asteroid(_velocity)
 		vector.visible = false

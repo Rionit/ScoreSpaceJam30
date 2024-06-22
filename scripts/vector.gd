@@ -15,9 +15,14 @@ func _draw() -> void:
 		start - global_position + vector, 
 		Color.RED, 
 		16)
-		
+
+func clamped(vec: Vector2) -> Vector2:
+	if vec.length() > maximum_length:
+		return vec.normalized() * maximum_length
+	return vec
+
 func refresh(_start, _end):
 	start = _start
 	end = _end
-	vector = -(end - start)
+	vector = clamped(-(end - start))
 	queue_redraw()

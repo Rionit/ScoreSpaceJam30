@@ -21,6 +21,7 @@ texture = ExtResource("1_87mre")
 
 [node name="Pointer" type="Sprite2D" parent="Rotables"]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(42.6563, 0.0625)
 texture = ExtResource("1_87mre")
 offset = Vector2(64.515, 0)
