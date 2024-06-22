@@ -69,3 +69,7 @@ func _on_area_2d_body_entered(body):
 		velocity = velocity / 2
 		state = sm.HOLDING
 		body.destroy()
+
+
+func _on_wrapper_wrapped(new_position):
+	position = new_position

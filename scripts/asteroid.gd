@@ -3,6 +3,8 @@ extends RigidBody2D
 const _f = 50
 const _a = 5
 
+var screen_size = get_viewport_rect().size
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -13,3 +15,7 @@ func _ready():
 
 func destroy():
 	queue_free()
+
+
+func _on_wrapper_wrapped(new_position):
+	position = new_position

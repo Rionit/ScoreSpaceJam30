@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6odsfphsm0kc"]
+[gd_scene load_steps=7 format=3 uid="uid://6odsfphsm0kc"]
 
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_87mre"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kfj6m"]
 [ext_resource type="PackedScene" uid="uid://bfwsb0bf1a2yf" path="res://scenes/vector.tscn" id="3_j6llq"]
+[ext_resource type="PackedScene" uid="uid://ct0f47k2qyti1" path="res://scenes/wrapper.tscn" id="4_f7nrb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxwvw"]
 radius = 35.0571
@@ -41,4 +42,7 @@ shape = SubResource("CircleShape2D_trwbt")
 
 [node name="Vector" parent="." instance=ExtResource("3_j6llq")]
 
+[node name="Wrapper" parent="." instance=ExtResource("4_f7nrb")]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="wrapped" from="Wrapper" to="." method="_on_wrapper_wrapped"]

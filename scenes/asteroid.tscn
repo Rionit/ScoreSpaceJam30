@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://crrkv51mbvwwc"]
+[gd_scene load_steps=5 format=3 uid="uid://crrkv51mbvwwc"]
 
 [ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_2hlsi"]
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_45sac"]
+[ext_resource type="PackedScene" uid="uid://ct0f47k2qyti1" path="res://scenes/wrapper.tscn" id="3_eoe5r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w3df"]
 radius = 32.7567
@@ -18,3 +19,7 @@ texture = ExtResource("1_45sac")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6w3df")
+
+[node name="Wrapper" parent="." instance=ExtResource("3_eoe5r")]
+
+[connection signal="wrapped" from="Wrapper" to="." method="_on_wrapper_wrapped"]
