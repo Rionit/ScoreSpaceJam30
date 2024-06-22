@@ -8,6 +8,8 @@ radius = 32.7567
 
 [node name="Asteroid" type="RigidBody2D" groups=["asteroids"]]
 gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_2hlsi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
