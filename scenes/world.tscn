@@ -7,6 +7,7 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_438g7")]
+unique_name_in_owner = true
 position = Vector2(577, 311)
 
 [node name="Asteroid" parent="." instance=ExtResource("2_62jkl")]

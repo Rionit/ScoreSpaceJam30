@@ -36,7 +36,7 @@ scale = Vector2(0.515625, 0.140625)
 texture = ExtResource("1_1lt42")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.1
 autostart = true
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

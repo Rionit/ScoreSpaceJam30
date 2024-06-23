@@ -63,13 +63,11 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("asteroids") and state == sm.IDLE:
 		velocity = velocity / 2
 		state = sm.HOLDING
 		body.destroy()
-
 
 func _on_wrapper_wrapped(new_position):
 	position = new_position
