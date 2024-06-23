@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3qvryvfuyn0l"]
+
+[ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_pwt18"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_twjhy"]
+[ext_resource type="PackedScene" uid="uid://ct0f47k2qyti1" path="res://scenes/wrapper.tscn" id="3_gbyhd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tafqq"]
+radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2bry"]
+radius = 8.0
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+continuous_cd = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_twjhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tafqq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_b2bry")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.03125, 0.03125)
+texture = ExtResource("1_pwt18")
+
+[node name="TTL" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Wrapper" parent="." instance=ExtResource("3_gbyhd")]
+obj_width = 5
+obj_height = 5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="TTL" to="." method="_on_ttl_timeout"]
+[connection signal="wrapped" from="Wrapper" to="." method="_on_wrapper_wrapped"]

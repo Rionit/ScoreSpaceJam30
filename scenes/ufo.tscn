@@ -35,11 +35,16 @@ position = Vector2(-1.86265e-07, -3.57628e-07)
 scale = Vector2(0.515625, 0.140625)
 texture = ExtResource("1_1lt42")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="OffsetTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Surroundings" to="." method="_on_surroundings_body_entered"]
 [connection signal="body_exited" from="Surroundings" to="." method="_on_surroundings_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="OffsetTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

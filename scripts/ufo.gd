@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name UFO
 
+const BULLET = preload("res://scenes/bullet.tscn")
+
 var player : CharacterBody2D
 var asteroids : Dictionary = {}
 var avoidance_distance := 100.0
@@ -53,6 +55,9 @@ func _seek_player() -> Vector2:
 	else:
 		return direction * 100
 
+func destroy():
+	call_deferred("queue_free")
+
 func _process(delta):
 	var avoidance = _check_asteroid_avoidance()
 	var seek = _seek_player()
@@ -63,3 +68,10 @@ func _process(delta):
 func _on_timer_timeout():
 	random_offset = Vector2(randi_range(-100, 100), randi_range(-100, 100)) 
 	#print("Changed offset: " + str(random_offset))
+
+func _on_shoot_timer_timeout():
+	var instance = BULLET.instantiate()
+	instance.linear_velocity = Vector2(randi_range(-100, 100), randi_range(-100, 100))
+	instance.position = global_position
+	instance.creator = self
+	get_parent().add_child(instance)
