@@ -15,3 +15,24 @@ position = Vector2(575, 181)
 
 [node name="Ufo" parent="." instance=ExtResource("3_govex")]
 position = Vector2(763, 343)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(260, 324)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(394, 503)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(155, 121)
+
+[node name="Ufo2" parent="." instance=ExtResource("3_govex")]
+position = Vector2(114, 504)
+
+[node name="Asteroid5" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(1046, 558)
+
+[node name="Asteroid6" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(1024, 167)
+
+[node name="Asteroid7" parent="." instance=ExtResource("2_62jkl")]
+position = Vector2(696, 578)

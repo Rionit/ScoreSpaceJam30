@@ -9,7 +9,7 @@ enum sizes { SMALL, MEDIUM, LARGE }
 var anims = { sizes.SMALL: "small",
 			  sizes.MEDIUM: "medium",
 			  sizes.LARGE: "large"}
-var screen_size = get_viewport_rect().size
+var screen_size
 var size = sizes.values().pick_random()
 
 const _f = 50
@@ -31,6 +31,8 @@ func _draw():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	screen_size = get_viewport_rect().size
+	
 	if size in anims:
 		animation_player.play(anims[size])
 	
@@ -51,12 +53,15 @@ func destroy() -> void:
 		for debree in debris:
 			debree.size = size - 1
 			debree.linear_velocity = -linear_velocity.rotated(randf())
-			get_parent().add_child(debree)
-		
-	queue_free()
+			call_deferred("_add_debris", debree)
+
+	call_deferred("queue_free")
+
+func _add_debris(debree):
+	get_parent().add_child(debree)
 
 func pickup():
-	queue_free()
+	call_deferred("queue_free")
 
 func _on_wrapper_wrapped(new_position):
 	position = new_position
