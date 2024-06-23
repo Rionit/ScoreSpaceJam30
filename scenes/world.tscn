@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdtvj282226of"]
+[gd_scene load_steps=3 format=3 uid="uid://cdtvj282226of"]
 
 [ext_resource type="PackedScene" uid="uid://6odsfphsm0kc" path="res://scenes/player.tscn" id="1_438g7"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m50p7"]
-[ext_resource type="PackedScene" uid="uid://byy84d2mgph2t" path="res://scenes/ufo.tscn" id="3_govex"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_m50p7")
@@ -11,11 +10,14 @@ script = ExtResource("1_m50p7")
 unique_name_in_owner = true
 position = Vector2(568, 329)
 
-[node name="Ufo" parent="." instance=ExtResource("3_govex")]
-position = Vector2(1023, 401)
-
 [node name="AsteroidSpawner" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
 
+[node name="UfoSpawner" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+autostart = true
+
 [connection signal="timeout" from="AsteroidSpawner" to="." method="_on_asteroid_spawner_timeout"]
+[connection signal="timeout" from="UfoSpawner" to="." method="_on_timer_timeout"]

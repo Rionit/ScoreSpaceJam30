@@ -1,10 +1,16 @@
 extends CharacterBody2D
+class_name UFO
 
-@onready var player : CharacterBody2D = %Player
+var player : CharacterBody2D
 var asteroids : Dictionary = {}
 var avoidance_distance := 100.0
 var avoidance_direction := Vector2.ZERO
 var random_offset := Vector2.ZERO
+
+static func new_ufo(_position: Vector2) -> UFO:
+	var new_asteroid: UFO = load("res://scenes/ufo.tscn").instantiate()
+	new_asteroid.position = _position
+	return new_asteroid
 
 func _draw():
 	draw_line(Vector2.ZERO, 
