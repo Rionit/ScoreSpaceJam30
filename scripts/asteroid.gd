@@ -1,8 +1,6 @@
 extends RigidBody2D
 class_name Asteroid
 
-#var scene: PackedScene = 
-
 @onready var animation_player = $AnimationPlayer
 
 enum sizes { SMALL, MEDIUM, LARGE }
