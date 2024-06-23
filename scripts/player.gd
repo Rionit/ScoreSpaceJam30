@@ -7,7 +7,7 @@ enum sm { IDLE, HOLDING, AIMING }
 @onready var rotables = $Rotables
 @onready var vector = $Vector
 
-var asteroid = preload("res://scenes/asteroid.tscn")
+var asteroid_size : int
 
 var click_start : Vector2 = Vector2.ZERO
 var click_end : Vector2 = Vector2.ZERO
@@ -29,10 +29,9 @@ func get_force():
 	return clamp((click_end - click_start).length(), 0, max_force)
 
 func throw_asteroid(_velocity):
-	var instance = asteroid.instantiate()
-	instance.position = spawner.global_position
+	var instance = Asteroid.new_asteroid(asteroid_size, -_velocity, spawner.global_position)
 	get_parent().add_child(instance)
-	instance.apply_impulse(-_velocity)
+	#print("Thrown size: " + str(instance.size))
 
 func holding():
 	if Input.is_action_just_pressed("left_click"):
@@ -67,7 +66,9 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("asteroids") and state == sm.IDLE:
 		velocity = velocity / 2
 		state = sm.HOLDING
-		body.destroy()
+		asteroid_size = body.size
+		body.pickup()
+		#print("Picked up size: " + str(asteroid_size))
 
 func _on_wrapper_wrapped(new_position):
 	position = new_position

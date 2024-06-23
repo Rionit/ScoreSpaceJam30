@@ -11,19 +11,7 @@ unique_name_in_owner = true
 position = Vector2(577, 311)
 
 [node name="Asteroid" parent="." instance=ExtResource("2_62jkl")]
-position = Vector2(520, 148)
+position = Vector2(575, 181)
 
-[node name="Asteroid2" parent="." instance=ExtResource("2_62jkl")]
-position = Vector2(177, 382)
-
-[node name="Asteroid3" parent="." instance=ExtResource("2_62jkl")]
-position = Vector2(183, 183)
-
-[node name="Asteroid4" parent="." instance=ExtResource("2_62jkl")]
-position = Vector2(923, 541)
-
-[node name="Asteroid5" parent="." instance=ExtResource("2_62jkl")]
-position = Vector2(1022, 203)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_govex")]
-position = Vector2(785, 158)
+[node name="Ufo" parent="." instance=ExtResource("3_govex")]
+position = Vector2(763, 343)

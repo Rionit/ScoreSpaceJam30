@@ -14,7 +14,7 @@ func _draw():
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("asteroids"):
-		body.queue_free()
+		body.destroy()
 		queue_free()
 		
 func _on_surroundings_body_entered(body):
@@ -56,4 +56,4 @@ func _process(delta):
 
 func _on_timer_timeout():
 	random_offset = Vector2(randi_range(-100, 100), randi_range(-100, 100)) 
-	print("Changed offset: " + str(random_offset))
+	#print("Changed offset: " + str(random_offset))
