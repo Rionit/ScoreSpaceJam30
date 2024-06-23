@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name Asteroid
 
-const scene: PackedScene = preload("res://scenes/asteroid.tscn")
+#var scene: PackedScene = 
 
 @onready var animation_player = $AnimationPlayer
 
@@ -16,7 +16,7 @@ const _f = 50
 const _a = 5
 
 static func new_asteroid(size: int, velocity: Vector2, _position: Vector2) -> Asteroid:
-	var new_asteroid: Asteroid = scene.instantiate()
+	var new_asteroid: Asteroid = load("res://scenes/asteroid.tscn").instantiate()
 	new_asteroid.size = size
 	new_asteroid.apply_impulse(velocity)
 	new_asteroid.position = _position
