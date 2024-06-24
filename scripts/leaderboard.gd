@@ -128,9 +128,8 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	# Clear node
 	leaderboard_http.queue_free()
 
-
 func _upload_score(score: int):
-	var data = { "score": str(score) }
+	var data = { "score": str(ScoreManager.score) }
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	submit_score_http = HTTPRequest.new()
 	add_child(submit_score_http)
@@ -144,7 +143,7 @@ func _change_player_name():
 	print("Changing player name")
 	
 	# use this variable for setting the name of the player
-	var player_name = "newName"
+	var player_name = ScoreManager.username
 	
 	var data = { "name": str(player_name) }
 	var url =  "https://api.lootlocker.io/game/player/name"
@@ -161,8 +160,9 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	
-	# Print data
-	print(json.get_data())
+	if json.get_data() != null:
+		# Print data
+		print(json.get_data())
 	set_name_http.queue_free()
 
 func _get_player_name():
@@ -181,17 +181,19 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	
-	# Print data
-	print(json.get_data())
-	# Print player name
-	print(json.get_data().name)
+	if json.get_data().has("name"):
+		# Print data
+		print(json.get_data())
+		# Print player name
+		print(json.get_data().name)
 
 func _on_upload_score_request_completed(result, response_code, headers, body) :
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	
-	# Print data
-	print(json.get_data())
+	if json.get_data() != null:
+		# Print data
+		print(json.get_data())
 	
 	# Clear node
 	submit_score_http.queue_free()

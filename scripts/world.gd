@@ -13,7 +13,6 @@ var screen_size : Vector2
 func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
-	
 	init()
 	
 func init():
@@ -25,6 +24,8 @@ func init():
 	
 	ufo_spawner.wait_time = 4
 	ufo_spawner.start()
+	
+	ScoreManager.reset()
 
 func spawn_asteroid():
 	var instance = Asteroid.new_asteroid(
@@ -54,6 +55,7 @@ func _on_timer_timeout():
 
 func _on_player_game_over():
 	print("GAME OVER")
+	Leaderboard._upload_score(ScoreManager.score)
 	
 	for node in get_children():
 		if node.is_in_group("asteroids"):

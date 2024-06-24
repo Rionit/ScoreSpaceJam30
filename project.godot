@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Throwing Asteroids"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ScoreManager="*res://scenes/score_manager.tscn"
+Leaderboard="*res://scenes/leaderboard.tscn"
 
 [input]
 

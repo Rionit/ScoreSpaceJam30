@@ -23,7 +23,7 @@ func _draw():
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("asteroids"):
 		body.destroy()
-		call_deferred("queue_free")
+		destroy()
 	elif body.is_in_group("player"):
 		body.destroy()
 		
@@ -58,6 +58,7 @@ func _seek_player() -> Vector2:
 		return direction * 100
 
 func destroy():
+	ScoreManager.ufo_destroyed()
 	call_deferred("queue_free")
 
 func _process(delta):
