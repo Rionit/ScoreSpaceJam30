@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Asteroid
 
 @onready var animation_player = $AnimationPlayer
+@onready var explode_sound = $ExplodeSound
 
 enum sizes { SMALL, MEDIUM, LARGE }
 var anims = { sizes.SMALL: "small",
@@ -50,7 +51,9 @@ func destroy() -> void:
 			debree.size = size - 1
 			debree.linear_velocity = -linear_velocity.rotated(randf())
 			call_deferred("_add_debris", debree)
-
+	
+	explode_sound.play()
+	await explode_sound.finished
 	call_deferred("queue_free")
 
 func _add_debris(debree):

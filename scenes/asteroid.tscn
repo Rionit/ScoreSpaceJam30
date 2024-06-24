@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crrkv51mbvwwc"]
+[gd_scene load_steps=14 format=3 uid="uid://crrkv51mbvwwc"]
 
 [ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_2hlsi"]
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_45sac"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2warg7vysgau" path="res://sprites/asteroid_large.png" id="4_edim4"]
 [ext_resource type="Texture2D" uid="uid://dot4jixk85r3k" path="res://sprites/asteroid_medium.png" id="5_pr0sw"]
 [ext_resource type="Texture2D" uid="uid://nqbcrgbmfk82" path="res://sprites/asteroid_small.png" id="6_od0gs"]
+[ext_resource type="AudioStream" uid="uid://doseu0n6cisrm" path="res://sounds/rock_destroy.mp3" id="7_psins"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w3df"]
 radius = 35.0
@@ -199,5 +200,8 @@ shape = SubResource("CircleShape2D_6w3df")
 libraries = {
 "": SubResource("AnimationLibrary_y1ghn")
 }
+
+[node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_psins")
 
 [connection signal="wrapped" from="Wrapper" to="." method="_on_wrapper_wrapped"]

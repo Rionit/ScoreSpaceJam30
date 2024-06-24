@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://byy84d2mgph2t"]
+[gd_scene load_steps=7 format=3 uid="uid://byy84d2mgph2t"]
 
 [ext_resource type="Script" path="res://scripts/ufo.gd" id="1_jxh1x"]
 [ext_resource type="Texture2D" uid="uid://drkjk4075i4s1" path="res://sprites/ufo.png" id="2_ae0mm"]
+[ext_resource type="AudioStream" uid="uid://l2equb3qad5p" path="res://sounds/explosion.mp3" id="3_hvect"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycr0t"]
 
@@ -42,6 +43,9 @@ autostart = true
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hvect")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Surroundings" to="." method="_on_surroundings_body_entered"]

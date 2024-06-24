@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name UFO
 
 const BULLET = preload("res://scenes/bullet.tscn")
+@onready var explosion_sound = $ExplosionSound
 
 var player : CharacterBody2D
 var asteroids : Dictionary = {}
@@ -59,6 +60,9 @@ func _seek_player() -> Vector2:
 
 func destroy():
 	ScoreManager.ufo_destroyed()
+	
+	explosion_sound.play()
+	await explosion_sound.finished
 	call_deferred("queue_free")
 
 func _process(delta):

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gmdshtcwrqjn"]
+
+[ext_resource type="AudioStream" uid="uid://brtuvbjjpeomp" path="res://sounds/music.mp3" id="1_3y3c1"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_3y3c1")
+autoplay = true
+panning_strength = 0.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3qvryvfuyn0l"]
+[gd_scene load_steps=7 format=3 uid="uid://d3qvryvfuyn0l"]
 
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_pwt18"]
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_twjhy"]
 [ext_resource type="PackedScene" uid="uid://ct0f47k2qyti1" path="res://scenes/wrapper.tscn" id="3_gbyhd"]
+[ext_resource type="AudioStream" uid="uid://dnpqwkrexlxv" path="res://sounds/pew.mp3" id="4_uvcls"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tafqq"]
 radius = 3.16228
@@ -39,6 +40,9 @@ autostart = true
 [node name="Wrapper" parent="." instance=ExtResource("3_gbyhd")]
 obj_width = 5
 obj_height = 5
+
+[node name="BulletSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uvcls")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="TTL" to="." method="_on_ttl_timeout"]

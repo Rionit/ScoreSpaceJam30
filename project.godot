@@ -21,6 +21,7 @@ config/icon="res://sprites/icon.png"
 
 ScoreManager="*res://scenes/score_manager.tscn"
 LeaderboardManager="*res://scenes/leaderboard_manager.tscn"
+Music="*res://scenes/music.tscn"
 
 [display]
 

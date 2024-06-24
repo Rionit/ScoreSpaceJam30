@@ -7,6 +7,7 @@ enum sm { IDLE, HOLDING, AIMING }
 @onready var rotables = $Rotables
 @onready var vector = $Vector
 @onready var animation_player = $AnimationPlayer
+@onready var throw_sound = $ThrowSound
 
 signal game_over
 
@@ -41,6 +42,7 @@ func get_force():
 func throw_asteroid(_velocity):
 	var instance = Asteroid.new_asteroid(asteroid_size, -_velocity, spawner.global_position)
 	get_parent().add_child(instance)
+	throw_sound.play()
 	#print("Thrown size: " + str(instance.size))
 
 func holding():
