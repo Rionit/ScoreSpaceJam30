@@ -9,6 +9,10 @@ var session_token = ""
 var score = 0
 
 signal leaderboard_retrieved(board)
+signal score_uploaded
+signal authenticated
+signal get_name_responded(name)
+signal change_name_responded(response)
 
 # HTTP Request node can only handle one call per node
 var auth_http = HTTPRequest.new()
@@ -72,11 +76,9 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	
 	# Print server response
 	print(json.get_data())
-	
+	authenticated.emit()
 	# Clear node
 	auth_http.queue_free()
-	# Get leaderboards
-	_get_leaderboards()
 
 func _get_leaderboards():
 	print("Getting leaderboards")
@@ -148,6 +150,14 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	if json.get_data() != null:
 		# Print data
 		print(json.get_data())
+		print("RESPONSE CODE:")
+		print(str(response_code))
+	
+	if response_code == 200:
+		change_name_responded.emit(true)
+	else:
+		change_name_responded.emit(false)
+	
 	set_name_http.queue_free()
 
 func _get_player_name():
@@ -166,12 +176,18 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	
+	
+	var name = ""
+	
 	if json.get_data().has("name"):
 		# Print data
 		print(json.get_data())
 		# Print player name
 		print(json.get_data().name)
+		name = json.get_data().name
 
+	get_name_responded.emit(name)
+	
 func _on_upload_score_request_completed(result, response_code, headers, body) :
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
@@ -180,5 +196,6 @@ func _on_upload_score_request_completed(result, response_code, headers, body) :
 		# Print data
 		print(json.get_data())
 	
+	score_uploaded.emit()
 	# Clear node
 	submit_score_http.queue_free()

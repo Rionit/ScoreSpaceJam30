@@ -58,7 +58,6 @@ func load_leaderboard():
 	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
 
 func _on_player_game_over():
-	LeaderboardManager._upload_score(ScoreManager.score)
 	
 	for node in get_children():
 		if node.is_in_group("asteroids"):
@@ -73,5 +72,8 @@ func _on_player_game_over():
 	
 	asteroid_spawner.stop()
 	ufo_spawner.stop()
-
+	
+	LeaderboardManager._upload_score(ScoreManager.score)
+	await LeaderboardManager.score_uploaded
+	
 	call_deferred("load_leaderboard")
