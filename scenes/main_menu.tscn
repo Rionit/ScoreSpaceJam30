@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu5kaqnliwk2c"]
+[gd_scene load_steps=4 format=3 uid="uid://cu5kaqnliwk2c"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_ywv53"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5f8x8"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_djpka"]
+events = [SubResource("InputEventKey_5f8x8")]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -50,6 +57,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 disabled = true
+shortcut = SubResource("Shortcut_djpka")
 text = "PLAY"
 
 [node name="Connecting" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
