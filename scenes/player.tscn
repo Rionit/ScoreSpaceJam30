@@ -11,7 +11,7 @@ radius = 35.0571
 [sub_resource type="CircleShape2D" id="CircleShape2D_trwbt"]
 radius = 55.1453
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_kfj6m")
 
 [node name="Rotables" type="Node2D" parent="."]

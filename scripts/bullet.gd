@@ -1,9 +1,10 @@
 extends RigidBody2D
+class_name Bullet
 
 var creator
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("destroy") and body != creator:
+	if body.is_in_group("asteroids") or body.is_in_group("aliens") and body != creator:
 		body.destroy()
 		call_deferred("queue_free")
 

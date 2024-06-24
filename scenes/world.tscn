@@ -19,5 +19,6 @@ unique_name_in_owner = true
 wait_time = 4.0
 autostart = true
 
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="timeout" from="AsteroidSpawner" to="." method="_on_asteroid_spawner_timeout"]
 [connection signal="timeout" from="UfoSpawner" to="." method="_on_timer_timeout"]

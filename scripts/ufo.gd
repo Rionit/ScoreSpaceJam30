@@ -24,6 +24,8 @@ func _on_hitbox_body_entered(body):
 	if body.is_in_group("asteroids"):
 		body.destroy()
 		call_deferred("queue_free")
+	elif body.is_in_group("player"):
+		body.destroy()
 		
 func _on_surroundings_body_entered(body):
 	if body.is_in_group("asteroids"):

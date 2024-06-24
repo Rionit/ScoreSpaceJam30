@@ -12,7 +12,7 @@ height = 76.5387
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvglj"]
 radius = 106.005
 
-[node name="Ufo" type="CharacterBody2D"]
+[node name="Ufo" type="CharacterBody2D" groups=["aliens"]]
 script = ExtResource("1_jxh1x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

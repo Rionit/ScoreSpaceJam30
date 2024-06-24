@@ -7,6 +7,8 @@ enum sm { IDLE, HOLDING, AIMING }
 @onready var rotables = $Rotables
 @onready var vector = $Vector
 
+signal game_over
+
 var asteroid_size : int
 
 var click_start : Vector2 = Vector2.ZERO
@@ -16,7 +18,14 @@ var state : sm = sm.IDLE
 const max_force := 600
 
 func _ready():
-	velocity = Vector2(0, -200)
+	init()
+
+func init():
+	velocity = Vector2.ZERO
+	var screen_size = get_viewport_rect().size
+	position = Vector2(screen_size.x/2, screen_size.y/2)
+	state = sm.HOLDING
+	asteroid_size = Asteroid.sizes.MEDIUM
 
 func _input(event):
 	if event is InputEventMouse:
@@ -61,6 +70,9 @@ func _physics_process(delta):
 			aiming()
 	
 	move_and_slide()
+
+func destroy():
+	emit_signal("game_over")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("asteroids") and state == sm.IDLE:
