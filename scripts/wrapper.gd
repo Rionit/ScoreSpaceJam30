@@ -7,12 +7,9 @@ var screen_size : Vector2
 
 signal wrapped(new_position)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	screen_size = get_viewport_rect().size
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	screen_size = get_viewport_rect().size
 	var x = global_position.x
 	var y = global_position.y
 	

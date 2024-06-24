@@ -12,7 +12,6 @@ var screen_size : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	screen_size = get_viewport_rect().size
 	init()
 	
 func init():
@@ -28,6 +27,7 @@ func init():
 	ScoreManager.reset()
 
 func spawn_asteroid():
+	screen_size = get_viewport_rect().size
 	var instance = Asteroid.new_asteroid(
 							Asteroid.sizes.values().pick_random(),
 							Vector2(randi_range(-100, 100), randi_range(-100, 100)),
@@ -36,6 +36,7 @@ func spawn_asteroid():
 	call_deferred("add_child", instance)
 
 func spawn_ufo():
+	screen_size = get_viewport_rect().size
 	var instance = UFO.new_ufo(Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y)))
 	instance.player = player
 	ufos.push_back(instance)

@@ -7,7 +7,6 @@ enum sizes { SMALL, MEDIUM, LARGE }
 var anims = { sizes.SMALL: "small",
 			  sizes.MEDIUM: "medium",
 			  sizes.LARGE: "large"}
-var screen_size
 var size = sizes.values().pick_random()
 
 const _f = 50
@@ -29,7 +28,6 @@ func _draw():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
 	
 	if size in anims:
 		animation_player.play(anims[size])
