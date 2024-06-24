@@ -4,16 +4,32 @@
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_m50p7"]
 [ext_resource type="Script" path="res://scripts/Control.gd" id="3_glkp6"]
 
-[node name="World" type="Node2D"]
+[node name="Node" type="Node"]
+
+[node name="World" type="Node2D" parent="."]
 script = ExtResource("1_m50p7")
+
+[node name="Player" parent="World" instance=ExtResource("1_438g7")]
+unique_name_in_owner = true
+position = Vector2(568, 329)
+
+[node name="AsteroidSpawner" type="Timer" parent="World"]
+unique_name_in_owner = true
+autostart = true
+
+[node name="UfoSpawner" type="Timer" parent="World"]
+unique_name_in_owner = true
+wait_time = 4.0
+autostart = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 647.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_glkp6")
-metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -42,19 +58,6 @@ text = "score"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" parent="." instance=ExtResource("1_438g7")]
-unique_name_in_owner = true
-position = Vector2(568, 329)
-
-[node name="AsteroidSpawner" type="Timer" parent="."]
-unique_name_in_owner = true
-autostart = true
-
-[node name="UfoSpawner" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 4.0
-autostart = true
-
-[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
-[connection signal="timeout" from="AsteroidSpawner" to="." method="_on_asteroid_spawner_timeout"]
-[connection signal="timeout" from="UfoSpawner" to="." method="_on_timer_timeout"]
+[connection signal="game_over" from="World/Player" to="World" method="_on_player_game_over"]
+[connection signal="timeout" from="World/AsteroidSpawner" to="World" method="_on_asteroid_spawner_timeout"]
+[connection signal="timeout" from="World/UfoSpawner" to="World" method="_on_timer_timeout"]

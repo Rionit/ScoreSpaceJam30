@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck4dvbpwqq3t5"]
+
+[ext_resource type="PackedScene" uid="uid://cu5kaqnliwk2c" path="res://scenes/main_menu.tscn" id="1_pgc65"]
+[ext_resource type="PackedScene" uid="uid://crrkv51mbvwwc" path="res://scenes/asteroid.tscn" id="2_qt51p"]
+
+[node name="Node" type="Node"]
+
+[node name="Asteroid" parent="." instance=ExtResource("2_qt51p")]
+position = Vector2(242, 220)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_qt51p")]
+position = Vector2(967, 466)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_qt51p")]
+position = Vector2(866, 165)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_qt51p")]
+position = Vector2(158, 469)
+
+[node name="Asteroid5" parent="." instance=ExtResource("2_qt51p")]
+position = Vector2(657, 569)
+
+[node name="Menu" parent="." instance=ExtResource("1_pgc65")]

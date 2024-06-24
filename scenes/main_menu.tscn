@@ -9,18 +9,18 @@ keycode = 4194309
 [sub_resource type="Shortcut" id="Shortcut_djpka"]
 events = [SubResource("InputEventKey_5f8x8")]
 
-[node name="MainMenu" type="Node2D"]
-
-[node name="Menu" type="Control" parent="."]
+[node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ywv53")
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,17 +34,17 @@ offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="NameLabel" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Username"
 
-[node name="Username" type="LineEdit" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Username" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -52,7 +52,7 @@ theme_override_font_sizes/font_size = 30
 placeholder_text = "mynameisjeff"
 alignment = 1
 
-[node name="Play" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -60,9 +60,9 @@ disabled = true
 shortcut = SubResource("Shortcut_djpka")
 text = "PLAY"
 
-[node name="Connecting" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Connecting" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Connecting to leaderboard..."
 
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Play" to="Menu" method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

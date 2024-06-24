@@ -6,6 +6,7 @@ enum sm { IDLE, HOLDING, AIMING }
 @onready var pointer = %Pointer
 @onready var rotables = $Rotables
 @onready var vector = $Vector
+@onready var animation_player = $AnimationPlayer
 
 signal game_over
 
@@ -43,6 +44,7 @@ func throw_asteroid(_velocity):
 	#print("Thrown size: " + str(instance.size))
 
 func holding():
+	animation_player.play("player_holding")
 	if Input.is_action_just_pressed("left_click"):
 		click_start = get_global_mouse_position()
 		state = sm.AIMING
@@ -62,8 +64,7 @@ func _physics_process(delta):
 	
 	match state:
 		sm.IDLE:
-			#state = sm.HOLDING # TEMPORARY!!
-			pass
+			animation_player.play("player_float")
 		sm.HOLDING:
 			holding()
 		sm.AIMING:

@@ -1,15 +1,181 @@
-[gd_scene load_steps=7 format=3 uid="uid://6odsfphsm0kc"]
+[gd_scene load_steps=13 format=3 uid="uid://6odsfphsm0kc"]
 
 [ext_resource type="Texture2D" uid="uid://c7wcx4fhr68nt" path="res://icon.svg" id="1_87mre"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kfj6m"]
+[ext_resource type="Texture2D" uid="uid://ch7ag5wwsoals" path="res://sprites/player_float.png" id="2_8xoyl"]
 [ext_resource type="PackedScene" uid="uid://bfwsb0bf1a2yf" path="res://scenes/vector.tscn" id="3_j6llq"]
 [ext_resource type="PackedScene" uid="uid://ct0f47k2qyti1" path="res://scenes/wrapper.tscn" id="4_f7nrb"]
+[ext_resource type="Texture2D" uid="uid://ccd6hp7swdv7v" path="res://sprites/player_holding.png" id="6_nob4o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxwvw"]
-radius = 35.0571
+radius = 37.0135
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trwbt"]
-radius = 55.1453
+radius = 60.0
+
+[sub_resource type="Animation" id="Animation_wb1ih"]
+resource_name = "player_float"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotables/Astronaut:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8xoyl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotables/Astronaut:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.075, 0.071)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotables/Astronaut:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [37.0135]
+}
+
+[sub_resource type="Animation" id="Animation_uiv3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotables/Astronaut:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8xoyl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotables/Astronaut:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.075, 0.071)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotables/Astronaut:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [37.0135]
+}
+
+[sub_resource type="Animation" id="Animation_w4fkg"]
+resource_name = "player_holding"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotables/Astronaut:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_nob4o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotables/Astronaut:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.075, 0.071)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotables/Astronaut:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [34.0147]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5q8j2"]
+_data = {
+"RESET": SubResource("Animation_uiv3u"),
+"player_float": SubResource("Animation_wb1ih"),
+"player_holding": SubResource("Animation_w4fkg")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_kfj6m")
@@ -17,8 +183,8 @@ script = ExtResource("1_kfj6m")
 [node name="Rotables" type="Node2D" parent="."]
 
 [node name="Astronaut" type="Sprite2D" parent="Rotables"]
-scale = Vector2(0.53125, 0.5)
-texture = ExtResource("1_87mre")
+scale = Vector2(0.075, 0.071)
+texture = ExtResource("2_8xoyl")
 
 [node name="Pointer" type="Sprite2D" parent="Rotables"]
 unique_name_in_owner = true
@@ -43,6 +209,11 @@ shape = SubResource("CircleShape2D_trwbt")
 [node name="Vector" parent="." instance=ExtResource("3_j6llq")]
 
 [node name="Wrapper" parent="." instance=ExtResource("4_f7nrb")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5q8j2")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="wrapped" from="Wrapper" to="." method="_on_wrapper_wrapped"]
