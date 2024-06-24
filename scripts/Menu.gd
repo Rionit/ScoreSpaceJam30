@@ -6,7 +6,7 @@ extends Control
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Leaderboard.session_token != "":
+	if LeaderboardManager.session_token != "":
 		connecting.visible = false
 		if username.text.length() > 3 and username.text.length() < 20:
 			play.disabled = false
@@ -19,4 +19,4 @@ func _process(delta):
 func _on_play_pressed():
 	ScoreManager.username = username.text
 	get_tree().change_scene_to_file("res://scenes/world.tscn")
-	Leaderboard._change_player_name()
+	LeaderboardManager._change_player_name()

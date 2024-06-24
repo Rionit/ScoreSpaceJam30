@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cslpku03a7ygu"]
+
+[ext_resource type="Script" path="res://scripts/board_entry.gd" id="1_g5g0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydund"]
+
+[node name="BoardEntry" type="HBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_g5g0q")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+text = "NAME"
+justification_flags = 160
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ydund")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "SCORE"
+horizontal_alignment = 2
+justification_flags = 160

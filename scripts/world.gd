@@ -54,8 +54,7 @@ func _on_timer_timeout():
 	ufo_spawner.wait_time = randi_range(5, 20)
 
 func _on_player_game_over():
-	print("GAME OVER")
-	Leaderboard._upload_score(ScoreManager.score)
+	LeaderboardManager._upload_score(ScoreManager.score)
 	
 	for node in get_children():
 		if node.is_in_group("asteroids"):
@@ -70,7 +69,5 @@ func _on_player_game_over():
 	
 	asteroid_spawner.stop()
 	ufo_spawner.stop()
-	
-	player.init()
-	init()
-	
+
+	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
