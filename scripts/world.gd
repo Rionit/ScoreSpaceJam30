@@ -53,6 +53,9 @@ func _on_timer_timeout():
 	spawn_ufo()
 	ufo_spawner.wait_time = randi_range(5, 20)
 
+func load_leaderboard():
+	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
+
 func _on_player_game_over():
 	LeaderboardManager._upload_score(ScoreManager.score)
 	
@@ -70,4 +73,4 @@ func _on_player_game_over():
 	asteroid_spawner.stop()
 	ufo_spawner.stop()
 
-	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
+	call_deferred("load_leaderboard")

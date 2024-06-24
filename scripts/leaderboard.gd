@@ -19,6 +19,8 @@ func _ready():
 		entry.score = i["score"]
 		player_list.add_child(entry)
 
+func load_game():
+	get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	call_deferred("load_game")
