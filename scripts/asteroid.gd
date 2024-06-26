@@ -45,6 +45,7 @@ func _process(delta):
 	queue_redraw()
 
 func destroy() -> void:
+	
 	if size != sizes.SMALL:
 		var debris = [duplicate(), duplicate()]
 		for debree in debris:

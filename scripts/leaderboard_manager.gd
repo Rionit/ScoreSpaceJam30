@@ -32,11 +32,11 @@ func _authentication_request():
 	var file = FileAccess.open("user://LootLocker.data", FileAccess.READ)
 	if file != null:
 		player_identifier = file.get_as_text()
-		print("player ID="+player_identifier)
+		#print("player ID="+player_identifier)
 		file.close()
  
 	if player_identifier != null and player_identifier.length() > 1:
-		print("player session exists, id="+player_identifier)
+		#print("player session exists, id="+player_identifier)
 		player_session_exists = true
 	if(player_identifier.length() > 1):
 		player_session_exists = true
@@ -58,7 +58,7 @@ func _authentication_request():
 	# Send request
 	auth_http.request("https://api.lootlocker.io/game/v2/session/guest", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 	# Print what we're sending, for debugging purposes:
-	print(data)
+	#print(data)
 
 
 func _on_authentication_request_completed(result, response_code, headers, body):
@@ -75,13 +75,13 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 		session_token = json.get_data().session_token
 	
 	# Print server response
-	print(json.get_data())
+	#print(json.get_data())
 	authenticated.emit()
 	# Clear node
 	auth_http.queue_free()
 
 func _get_leaderboards():
-	print("Getting leaderboards")
+	#print("Getting leaderboards")
 	var url = "https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/list?count=10"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
@@ -98,7 +98,7 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	json.parse(body.get_string_from_utf8())
 	
 	# Print data
-	print(json.get_data())
+	#print(json.get_data())
 	
 	if json.get_data().items != null:
 		# Formatting as a leaderboard
@@ -108,7 +108,7 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 			leaderboardFormatted += str(json.get_data().items[n].player.id)+str(" - ")
 			leaderboardFormatted += str(json.get_data().items[n].score)+str("\n")
 		# Print the formatted leaderboard to the console
-		print(leaderboardFormatted)
+		#print(leaderboardFormatted)
 	
 	leaderboard_retrieved.emit(json.get_data().items)
 	
@@ -124,10 +124,10 @@ func _upload_score(score: int):
 	# Send request
 	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 	# Print what we're sending, for debugging purposes:
-	print(data)
+	#print(data)
 
 func _change_player_name():
-	print("Changing player name")
+	#print("Changing player name")
 	
 	# use this variable for setting the name of the player
 	var player_name = ScoreManager.username
@@ -148,10 +148,11 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	json.parse(body.get_string_from_utf8())
 	
 	if json.get_data() != null:
+		pass
 		# Print data
-		print(json.get_data())
-		print("RESPONSE CODE:")
-		print(str(response_code))
+		#print(json.get_data())
+		#print("RESPONSE CODE:")
+		#print(str(response_code))
 	
 	if response_code == 200:
 		change_name_responded.emit(true)
@@ -161,7 +162,7 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	set_name_http.queue_free()
 
 func _get_player_name():
-	print("Getting player name")
+	#print("Getting player name")
 	var url = "https://api.lootlocker.io/game/player/name"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
@@ -181,9 +182,9 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	
 	if json.get_data().has("name"):
 		# Print data
-		print(json.get_data())
+		#print(json.get_data())
 		# Print player name
-		print(json.get_data().name)
+		#print(json.get_data().name)
 		name = json.get_data().name
 
 	get_name_responded.emit(name)
@@ -193,8 +194,9 @@ func _on_upload_score_request_completed(result, response_code, headers, body) :
 	json.parse(body.get_string_from_utf8())
 	
 	if json.get_data() != null:
+		pass
 		# Print data
-		print(json.get_data())
+		#print(json.get_data())
 	
 	score_uploaded.emit()
 	# Clear node
