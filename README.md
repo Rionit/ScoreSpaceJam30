@@ -1,3 +1,5 @@
+Please visit my [Itch Profile](https://rionit.itch.io/) for more info!
+
 Hello whoever reads this
 
 This is a videogame I coded in Godot for a ScoreSpace #30 gamejam in a span of 3 days.
